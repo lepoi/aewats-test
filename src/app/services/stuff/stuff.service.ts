@@ -1,25 +1,29 @@
 import { Injectable } from '@angular/core';
+import { Observable, Subject } from 'rxjs';
 
 @Injectable({
     providedIn: 'root'
 })
 
-export class StuffService {
-    lastTick: number;
-    stuff: number;
-
+export default class StuffService {
+    private data: number;
+    private stuff: Subject<number>
+    
     constructor() {
-        this.lastTick = new Date().getDate();
+        this.stuff = new Subject<number>();
+        this.data = Math.floor(Math.random() * 100);
+
+        setInterval(_ => {
+            this.data = Math.floor(Math.random() * 100);
+            this.stuff.next(this.data);
+        }, 1000);
     }
 
-    getStuff() {
-        const newTick: number = new Date().getDate();
-        
-        if (newTick - this.lastTick > 1000) {
-            this.stuff = Math.random();
-            this.lastTick = newTick;
-        }
+    public getStuff(): number {
+        return this.data;
+    }
 
-        return this.stuff;
+    public listen(): Observable<number> {
+        return this.stuff.asObservable();
     }
 }
