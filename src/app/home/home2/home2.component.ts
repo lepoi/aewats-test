@@ -10,15 +10,7 @@ import StuffService from './../../services/stuff/stuff.service';
 })
 
 export class Home2Component implements OnInit {
-    public stuff: number;
-    public stuffObservable: Observable<number>;
+    constructor(private stuffService: StuffService) {}
 
-    constructor(private stuffService: StuffService) {
-        this.stuffObservable = this.stuffService.listen();
-    }
-
-    ngOnInit() {
-        this.stuff = this.stuffService.getStuff();
-        this.stuffObservable.subscribe(data => this.stuff = data);
-    }
+    ngOnInit() {}
 }
