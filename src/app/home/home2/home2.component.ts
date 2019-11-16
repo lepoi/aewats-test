@@ -6,10 +6,10 @@ import StuffService from './../../services/stuff/stuff.service';
 @Component({
     selector: 'aewats-home-2',
     templateUrl: './home2.component.html',
-    styleUrls: ['./home2.component.scss']
+    styleUrls: ['./home2.component.sass']
 })
 
-export class Home2Component implements OnInit {
+export default class Home2Component implements OnInit {
     constructor(private stuffService: StuffService) {}
 
     ngOnInit() {}

@@ -1,3 +1,10 @@
 <div id='screen1'>
     Screen 1
+
+    <div class='aewa-container' *ngIf='aewas.length'>
+        <aewa
+            *ngFor='let aewa of aewas'
+            [aewa]='aewa'
+        ></aewa>
+    </div>
 </div>

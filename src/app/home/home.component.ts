@@ -3,10 +3,10 @@ import { Component } from '@angular/core';
 @Component({
     selector: 'aewats-home',
     templateUrl: './home.component.html',
-    styleUrls: ['./home.component.scss']
+    styleUrls: ['./home.component.sass']
 })
 
-export class HomeComponent {
+export default class HomeComponent {
     value: string;
 
     constructor() {
